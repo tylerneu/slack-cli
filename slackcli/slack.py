@@ -95,10 +95,15 @@ def parse_status_update(text):
     containing the profile attributes to be updated. Else return None.
     """
     status_update_match = re.match(
-        r"^/status (?P<status_emoji>:[^ :]+:) +(?P<status_text>.+)$", text
+        r"r/status (?P<status_emoji>:[^ :]+:) +(?P<status_text>.?)+", text
     )
-    # return None if status_update_match is None else status_update_match.groupdict()
-    return status_update_match.groupdict()
+
+    clear_status = {
+        "status_emoji": "",
+        "status_text": "",
+    }
+
+    return clear_status if status_update_match is None else status_update_match.groupdict()
 
 
 def update_status_fields(**profile):
