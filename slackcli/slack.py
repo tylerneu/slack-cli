@@ -97,7 +97,8 @@ def parse_status_update(text):
     status_update_match = re.match(
         r"^/status (?P<status_emoji>:[^ :]+:) +(?P<status_text>.+)$", text
     )
-    return None if status_update_match is None else status_update_match.groupdict()
+    # return None if status_update_match is None else status_update_match.groupdict()
+    return status_update_match.groupdict()
 
 
 def update_status_fields(**profile):
